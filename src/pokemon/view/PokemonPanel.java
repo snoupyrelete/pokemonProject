@@ -76,6 +76,17 @@ public class PokemonPanel extends JPanel
 	
 	private void setupLayout()
 	{
+		baseLayout.putConstraint(SpringLayout.NORTH, combatLabel, 19, SpringLayout.SOUTH, healthLabel);
+		baseLayout.putConstraint(SpringLayout.WEST, combatLabel, 0, SpringLayout.WEST, healthLabel);
+		baseLayout.putConstraint(SpringLayout.NORTH, advancedLabel, 0, SpringLayout.NORTH, pokemonLabel);
+		baseLayout.putConstraint(SpringLayout.WEST, advancedLabel, 0, SpringLayout.WEST, healthLabel);
+		baseLayout.putConstraint(SpringLayout.WEST, healthLabel, 0, SpringLayout.WEST, nameLabel);
+		baseLayout.putConstraint(SpringLayout.NORTH, healthField, 8, SpringLayout.SOUTH, numberField);
+		baseLayout.putConstraint(SpringLayout.NORTH, speedLabel, 6, SpringLayout.NORTH, speedField);
+		baseLayout.putConstraint(SpringLayout.NORTH, speedField, 14, SpringLayout.SOUTH, combatField);
+		baseLayout.putConstraint(SpringLayout.WEST, speedLabel, 0, SpringLayout.WEST, healthLabel);
+		baseLayout.putConstraint(SpringLayout.NORTH, combatField, 8, SpringLayout.SOUTH, healthField);
+		baseLayout.putConstraint(SpringLayout.NORTH, healthLabel, 6, SpringLayout.NORTH, healthField);
 		baseLayout.putConstraint(SpringLayout.NORTH, pokedexSelector, 39, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, pokedexSelector, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, updateButton, 34, SpringLayout.SOUTH, advancedArea);
@@ -86,29 +97,18 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, nameField, -2, SpringLayout.NORTH, pokedexSelector);
 		baseLayout.putConstraint(SpringLayout.WEST, numberField, 73, SpringLayout.EAST, numberLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, numberField, -6, SpringLayout.NORTH, numberLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, speedField, 0, SpringLayout.NORTH, speedLabel);
 		baseLayout.putConstraint(SpringLayout.WEST, speedField, 0, SpringLayout.WEST, healthField);
 		baseLayout.putConstraint(SpringLayout.EAST, updateButton, 0, SpringLayout.EAST, combatField);
 		baseLayout.putConstraint(SpringLayout.WEST, combatField, 371, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, healthField, 0, SpringLayout.WEST, combatField);
-		baseLayout.putConstraint(SpringLayout.NORTH, combatField, -6, SpringLayout.NORTH, combatLabel);
 		baseLayout.putConstraint(SpringLayout.EAST, updateButton, 0, SpringLayout.EAST, combatField);
 		baseLayout.putConstraint(SpringLayout.WEST, combatField, 371, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, healthField, 0, SpringLayout.WEST, combatField);
 		baseLayout.putConstraint(SpringLayout.NORTH, combatField, -6, SpringLayout.NORTH, combatLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, advancedLabel, 0, SpringLayout.NORTH, pokemonLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, advancedLabel, 0, SpringLayout.WEST, healthLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, speedLabel, 20, SpringLayout.SOUTH, combatLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, speedLabel, 0, SpringLayout.WEST, healthLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, healthLabel, 20, SpringLayout.SOUTH, numberLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, numberLabel, 16, SpringLayout.SOUTH, nameLabel);
 		baseLayout.putConstraint(SpringLayout.WEST, numberLabel, 0, SpringLayout.WEST, nameLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, combatLabel, 20, SpringLayout.SOUTH, healthLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, combatLabel, 251, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, pokemonLabel, 159, SpringLayout.SOUTH, pokedexSelector);
 		baseLayout.putConstraint(SpringLayout.WEST, pokemonLabel, 0, SpringLayout.WEST, pokedexSelector);
-		baseLayout.putConstraint(SpringLayout.NORTH, healthField, -6, SpringLayout.NORTH, healthLabel);
-		baseLayout.putConstraint(SpringLayout.EAST, healthLabel, -610, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, nameLabel, 4, SpringLayout.NORTH, pokedexSelector);
 	}
 	
