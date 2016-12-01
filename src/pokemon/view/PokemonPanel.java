@@ -130,7 +130,7 @@ public class PokemonPanel extends JPanel
 				pokemon = (String) pokedexSelector.getSelectedItem();
 				nameField.setText((String) pokedexSelector.getSelectedItem());
 				numberField.setText((String) pokedexSelector.getSelectedItem());
-				healthField.setText("");
+				baseController.getPokemonInfo().get("name");
 				
 				//pokemonLabel.setIcon(getClass().getResource("/pokemon/view/images/" + (String) pokedexSelector.getSelectedItem()));
 				pokemonLabel.setIcon(new ImageIcon(getClass().getResource("/pokemon/view/images/" + pokemon + ".png")));
