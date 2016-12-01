@@ -26,7 +26,7 @@ public class PokemonFrame extends JFrame
 	{
 		this.setContentPane(pokemonPanel);
 		this.setTitle("Chatbot Window");
-		this.setSize(new Dimension(500, 500));
+		this.setSize(new Dimension(900, 600));
 		this.setVisible(true);
 	}
 }

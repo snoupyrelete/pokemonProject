@@ -11,7 +11,7 @@ public class PokemonController
 
 	public PokemonController()
 	{
-		pokemon = new Pokemon();
+		pokemon = new Pokemon("");
 		pokemonFrame = new PokemonFrame(this);
 	}
 	
