@@ -24,8 +24,9 @@ public class PokemonController
 		
 	}
 	
-	public Map getPokemonInfo()
+	public Map getPokemonInfo(String name)
 	{
+		pokemon = new Pokemon(name);
 		map.put("name", pokemon.getName());
 		map.put("number", pokemon.getNumber());
 		map.put("health", pokemon.getHitPoints());

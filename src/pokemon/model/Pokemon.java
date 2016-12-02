@@ -11,13 +11,12 @@ public class Pokemon
 	
 	public Pokemon(String name)
 	{
-		this.hitPoints = 0;
+		this.hitPoints = 10;
 		this.attackPoints = 0;
 		this.number = 0;
 		this.speed = 0.0;
 		this.name = "";
 	}
-
 
 	public int getHitPoints()
 	{

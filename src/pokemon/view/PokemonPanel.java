@@ -128,13 +128,15 @@ public class PokemonPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				pokemon = (String) pokedexSelector.getSelectedItem();
-				nameField.setText((String) pokedexSelector.getSelectedItem());
-				numberField.setText((String) pokedexSelector.getSelectedItem());
-				baseController.getPokemonInfo().get("name");
+				
+				//nameField.setText((String) pokedexSelector.getSelectedItem());
+				//nField.setText((String) pokedexSelector.getSelectedItem());
+				nameField.setText((String) baseController.getPokemonInfo(pokemon).get("name"));
+				numberField.setText((String) baseController.getPokemonInfo(pokemon).get("number"));
+				healthField.setText((String) baseController.getPokemonInfo(pokemon).get("health"));
 				
 				//pokemonLabel.setIcon(getClass().getResource("/pokemon/view/images/" + (String) pokedexSelector.getSelectedItem()));
 				pokemonLabel.setIcon(new ImageIcon(getClass().getResource("/pokemon/view/images/" + pokemon + ".png")));
-				
 			}
 		});
 //		checkBox.addActionListener(new ActionListener()
