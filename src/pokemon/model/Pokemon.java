@@ -1,6 +1,6 @@
 package pokemon.model;
 
-public class Pokemon
+public abstract class Pokemon
 {
 	private int hitPoints;
 	private int attackPoints;
@@ -9,13 +9,10 @@ public class Pokemon
 	private String name;
 
 	
-	public Pokemon(String name)
+	public Pokemon(String name, int number)
 	{
-		this.hitPoints = 10;
-		this.attackPoints = 0;
-		this.number = 0;
-		this.speed = 0.0;
-		this.name = "";
+		this.name = name;
+		this.number = number;
 	}
 
 	public int getHitPoints()
@@ -67,6 +64,13 @@ public class Pokemon
 	{
 		this.name = name;
 	}
+	
+//	public String getPokemonTypes()
+//	{
+//		String pokemonTypes = "This pokemon is the followingypes:\n";
+//		//Class<?> [] types = getClass.getInterfaces();
+//		
+//	}
 	
 	
 }

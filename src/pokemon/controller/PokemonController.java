@@ -1,22 +1,24 @@
 package pokemon.controller;
 
-import pokemon.model.Pokemon;
+import pokemon.model.*;
 import pokemon.view.PokemonFrame;
+
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
 public class PokemonController
 {
-	private Pokemon pokemon;
-
+	//private Pokemon pokemon;
 	private PokemonFrame pokemonFrame;
-	private Map map;
+	private ArrayList<Pokemon> pokedex;
 	
 	public PokemonController()
 	{
-		pokemon = new Pokemon("");
 		pokemonFrame = new PokemonFrame(this);
-		Map<String, String> map = new HashMap<String, String>();
+
+		pokedex = new ArrayList<Pokemon>();
+		buildPokedex();
 	}
 	
 	public void start()
@@ -24,17 +26,41 @@ public class PokemonController
 		
 	}
 	
-	public Map getPokemonInfo(String name)
+	private void buildPokedex()
 	{
-		pokemon = new Pokemon(name);
-		map.put("name", pokemon.getName());
-		map.put("number", pokemon.getNumber());
-		map.put("health", pokemon.getHitPoints());
-		map.put("attack", pokemon.getAttackPoints());
-		map.put("speed", pokemon.getSpeed());
-		//map.put("types", pokemon.getNumber());
+		pokedex.add(new Geodude("rock-man-thing"));
+		pokedex.add(new Vulpix("Fire Squirell"));
+		pokedex.add(new Shyguy("ghost From Mario?"));
+		pokedex.add(new Magcargo("Fire Snail"));
+	}
 	
+	public String[] buildPokedexText()
+	{
+		String [] pokemonNames = pokemonNames = new String[pokedex.size()];
+		for(int index = 0; index < pokedex.size(); index++)
+		{
+			pokemonNames[index] = pokedex.get(index).getName();
+		}
 		
-		return map;
+		return pokemonNames;
+	}
+	
+	public void updateSelected(int index, String name, int combat, int health, double speed)
+	{
+		Pokemon current = pokedex.get(index);
+		current.setName(name);
+		current.setAttackPoints(combat);
+		current.setSpeed(speed);
+		current.setHitPoints(health);
+	}
+	
+	public ArrayList<Pokemon> getPokedex()
+	{
+		return pokedex;
+	}
+	
+	public PokemonFrame getBaseFrame()
+	{
+		return pokemonFrame;
 	}
 }

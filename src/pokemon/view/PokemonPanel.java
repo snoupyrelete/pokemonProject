@@ -52,6 +52,7 @@ public class PokemonPanel extends JPanel
 		this.combatField = new JTextField("combatField");
 		this.speedField = new JTextField("speedField");
 		this.nameField = new JTextField("nameField");
+		
 		this.numberField = new JTextField("numberField");
 		this.advancedArea = new JTextArea("advancedArea");
 		
@@ -102,7 +103,6 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, updateButton, 34, SpringLayout.SOUTH, advancedArea);
 		baseLayout.putConstraint(SpringLayout.WEST, advancedArea, 0, SpringLayout.WEST, healthField);
 		baseLayout.putConstraint(SpringLayout.WEST, nameField, 371, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.EAST, nameLabel, -87, SpringLayout.WEST, nameField);
 		baseLayout.putConstraint(SpringLayout.NORTH, nameField, -2, SpringLayout.NORTH, pokedexSelector);
 		baseLayout.putConstraint(SpringLayout.WEST, numberField, 73, SpringLayout.EAST, numberLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, numberField, -6, SpringLayout.NORTH, numberLabel);
@@ -119,6 +119,8 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, pokemonLabel, 159, SpringLayout.SOUTH, pokedexSelector);
 		baseLayout.putConstraint(SpringLayout.WEST, pokemonLabel, 0, SpringLayout.WEST, pokedexSelector);
 		baseLayout.putConstraint(SpringLayout.NORTH, nameLabel, 4, SpringLayout.NORTH, pokedexSelector);
+		baseLayout.putConstraint(SpringLayout.EAST, nameLabel, -87, SpringLayout.WEST, nameField);
+		baseLayout.putConstraint(SpringLayout.EAST, nameField, 571, SpringLayout.WEST, this);
 	}
 	
 	private void setupListeners()
@@ -127,24 +129,50 @@ public class PokemonPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				pokemon = (String) pokedexSelector.getSelectedItem();
-				
+				//pokemon = (String) pokedexSelector.getSelectedItem();
+		
 				//nameField.setText((String) pokedexSelector.getSelectedItem());
 				//nField.setText((String) pokedexSelector.getSelectedItem());
-				nameField.setText((String) baseController.getPokemonInfo(pokemon).get("name"));
-				numberField.setText((String) baseController.getPokemonInfo(pokemon).get("number"));
-				healthField.setText((String) baseController.getPokemonInfo(pokemon).get("health"));
+//				nameField.setText((String) baseController.getPokemonInfo(pokemon).get("name"));
+//				numberField.setText((String) baseController.getPokemonInfo(pokemon).get("number"));
+//				healthField.setText((String) baseController.getPokemonInfo(pokemon).get("health"));
 				
 				//pokemonLabel.setIcon(getClass().getResource("/pokemon/view/images/" + (String) pokedexSelector.getSelectedItem()));
+				int selected = pokedexSelector.getSelectedIndex();
+				nameField.setText(baseController.getPokedex().get(selected).getName());
+				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
+				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
+				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
+				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
+				//advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
 				pokemonLabel.setIcon(new ImageIcon(getClass().getResource("/pokemon/view/images/" + pokemon + ".png")));
+				
 			}
 		});
-//		checkBox.addActionListener(new ActionListener()
-//		{
-//			public void actionPerformed(ActionEvent selection)
-//			{
-//				changeBackground();
-//			}
-//		});
+	}
+	
+	private void changeColor()
+	{
+		
+	}
+	
+	private void changeImageDisplay()
+	{
+		
+	}
+	
+	private boolean isValidDouble(String input)
+	{
+		return true;
+	}
+	
+	private boolean isValidInteger(String input)
+	{
+		return true;
+	}
+	
+	private boolean isValidName(String name)
+	{
+		return true;
 	}
 }
