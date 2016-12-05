@@ -36,7 +36,7 @@ public class PokemonController
 	
 	public String[] buildPokedexText()
 	{
-		String [] pokemonNames = pokemonNames = new String[pokedex.size()];
+		String [] pokemonNames = new String[pokedex.size()];
 		for(int index = 0; index < pokedex.size(); index++)
 		{
 			pokemonNames[index] = pokedex.get(index).getName();

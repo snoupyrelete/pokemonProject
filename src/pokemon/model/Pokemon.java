@@ -65,12 +65,32 @@ public abstract class Pokemon
 		this.name = name;
 	}
 	
-//	public String getPokemonTypes()
-//	{
-//		String pokemonTypes = "This pokemon is the followingypes:\n";
-//		//Class<?> [] types = getClass.getInterfaces();
-//		
-//	}
+	public String getPokemonTypes()
+	{
+		String pokemonTypes = "This pokemon is the followingypes:\n";
+		Class<?> [] types = getClass().getInterfaces();
+		String [] pokeTypes = new String[types.length];
+		for(int index = 0; index < types.length; index++)
+		{
+			String temp = types[index].getCanonicalName();
+			pokeTypes[index] = temp;
+		}
+		
+		for(String current: pokeTypes)
+		{
+			String temp = current.replace(this.getClass().getPackage().getName() + ".", "");
+			pokemonTypes += temp += "\n";
+		}
+		
+		return pokemonTypes;
+	}
+	
+	public String getPokemonInformation()
+	{
+		String pokemonInfo = "This pokemon is: " + this.getClass().getSimpleName();
+		
+		return pokemonInfo;
+	}
 	
 	
 }

@@ -40,7 +40,7 @@ public class PokemonPanel extends JPanel
 		this.baseLayout = new SpringLayout();
 		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/pokeball.png"));
 		this.updateButton = new JButton("Update!");
-		this.pokedexSelector = new JComboBox(new String [] {"ShyGuy","Jigglypuff","Vulpix","Magcargo","GeoDude"});
+		this.pokedexSelector = new JComboBox(baseController.buildPokedexText());
 		this.pokemonLabel = new JLabel("Current Pokemon", pokemonIcon, SwingConstants.CENTER);
 		this.healthLabel = new JLabel("health");
 		this.combatLabel = new JLabel("combat");
@@ -139,12 +139,13 @@ public class PokemonPanel extends JPanel
 				
 				//pokemonLabel.setIcon(getClass().getResource("/pokemon/view/images/" + (String) pokedexSelector.getSelectedItem()));
 				int selected = pokedexSelector.getSelectedIndex();
+				System.out.println(baseController.getPokedex().get(selected));
 				nameField.setText(baseController.getPokedex().get(selected).getName());
 				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
 				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
 				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
 				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
-				//advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
+				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
 				pokemonLabel.setIcon(new ImageIcon(getClass().getResource("/pokemon/view/images/" + pokemon + ".png")));
 				
 			}
