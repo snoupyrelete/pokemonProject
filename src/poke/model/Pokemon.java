@@ -1,4 +1,4 @@
-package pokemon.model;
+package poke.model;
 
 public abstract class Pokemon
 {
@@ -67,7 +67,7 @@ public abstract class Pokemon
 	
 	public String getPokemonTypes()
 	{
-		String pokemonTypes = "This pokemon is the followingypes:\n";
+		String pokemonTypes = "-----\nTYPES:\n";
 		Class<?> [] types = getClass().getInterfaces();
 		String [] pokeTypes = new String[types.length];
 		for(int index = 0; index < types.length; index++)

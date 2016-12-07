@@ -1,14 +1,14 @@
-package pokemon.view;
+package poke.view;
 
 import java.awt.Color;
 
 import javax.swing.*;
 
+import poke.controller.PokemonController;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
-
-import pokemon.controller.PokemonController;
 
 public class PokemonPanel extends JPanel
 {
@@ -38,7 +38,7 @@ public class PokemonPanel extends JPanel
 		this.pokemon = "";
 		this.baseController = baseController;
 		this.baseLayout = new SpringLayout();
-		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/pokeball.png"));
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/poke/view/images/pokeball.png"));
 		this.updateButton = new JButton("Update!");
 		this.pokedexSelector = new JComboBox(baseController.buildPokedexText());
 		this.pokemonLabel = new JLabel("Current Pokemon", pokemonIcon, SwingConstants.CENTER);
@@ -129,15 +129,6 @@ public class PokemonPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				//pokemon = (String) pokedexSelector.getSelectedItem();
-		
-				//nameField.setText((String) pokedexSelector.getSelectedItem());
-				//nField.setText((String) pokedexSelector.getSelectedItem());
-//				nameField.setText((String) baseController.getPokemonInfo(pokemon).get("name"));
-//				numberField.setText((String) baseController.getPokemonInfo(pokemon).get("number"));
-//				healthField.setText((String) baseController.getPokemonInfo(pokemon).get("health"));
-				
-				//pokemonLabel.setIcon(getClass().getResource("/pokemon/view/images/" + (String) pokedexSelector.getSelectedItem()));
 				int selected = pokedexSelector.getSelectedIndex();
 				System.out.println(baseController.getPokedex().get(selected));
 				nameField.setText(baseController.getPokedex().get(selected).getName());
@@ -146,20 +137,45 @@ public class PokemonPanel extends JPanel
 				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
 				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
 				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
-				pokemonLabel.setIcon(new ImageIcon(getClass().getResource("/pokemon/view/images/" + pokemon + ".png")));
 				
+				changeColorBasedOnType(baseController.getPokedex().get(selected).getPokemonTypes());
+				changeImageDisplay(baseController.getPokedex().get(selected).getClass().getSimpleName());
 			}
 		});
 	}
 	
-	private void changeColor()
+	private void changeColorBasedOnType(String type)
 	{
-		
+		if (type.contains("Fairy"))
+		{
+			this.setBackground(Color.PINK);
+		}
+		else if (type.contains("Fire"))
+		{
+			this.setBackground(Color.RED);
+		}
+		else if (type.contains("Rock"))
+		{
+			this.setBackground(Color.GRAY);
+		}
+		repaint();
 	}
 	
-	private void changeImageDisplay()
+	private void changeImageDisplay(String name)
 	{
-		
+		String path = "/poke/view/images/";
+		String defaultName = "pokeball";
+		String extension = ".png";
+		try
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + name + extension));
+		}
+		catch (NullPointerException missingFile)
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
+		}
+		pokemonLabel.setIcon(pokemonIcon);
+		repaint();
 	}
 	
 	private boolean isValidDouble(String input)

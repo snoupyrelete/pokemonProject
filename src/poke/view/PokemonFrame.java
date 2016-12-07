@@ -1,11 +1,11 @@
-package pokemon.view;
+package poke.view;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import pokemon.controller.PokemonController;
-import pokemon.view.PokemonPanel;
+import poke.controller.PokemonController;
+import poke.view.PokemonPanel;
 
 public class PokemonFrame extends JFrame
 {
@@ -25,7 +25,7 @@ public class PokemonFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(pokemonPanel);
-		this.setTitle("Chatbot Window");
+		this.setTitle("Pokemon Window");
 		this.setSize(new Dimension(900, 600));
 		this.setVisible(true);
 	}

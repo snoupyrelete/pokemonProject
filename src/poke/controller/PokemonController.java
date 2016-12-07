@@ -1,10 +1,11 @@
-package pokemon.controller;
-
-import pokemon.model.*;
-import pokemon.view.PokemonFrame;
+package poke.controller;
 
 import java.util.ArrayList;
 import java.util.Map;
+
+import poke.model.*;
+import poke.view.PokemonFrame;
+
 import java.util.HashMap;
 
 public class PokemonController
@@ -15,8 +16,6 @@ public class PokemonController
 	
 	public PokemonController()
 	{
-		
-
 		pokedex = new ArrayList<Pokemon>();
 		buildPokedex();
 		pokemonFrame = new PokemonFrame(this);
@@ -33,6 +32,8 @@ public class PokemonController
 		pokedex.add(new Vulpix("Fire Squirell"));
 		pokedex.add(new Shyguy("ghost From Mario?"));
 		pokedex.add(new Magcargo("Fire Snail"));
+		pokedex.add(new Jigglypuff("Jiggle-fairy"));
+		pokedex.add(new Geodude("another stupid rock guy?!?!"));
 	}
 	
 	public String[] buildPokedexText()
