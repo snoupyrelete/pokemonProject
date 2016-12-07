@@ -41,7 +41,7 @@ public class PokemonPanel extends JPanel
 		this.pokemonIcon = new ImageIcon(getClass().getResource("/poke/view/images/pokeball.png"));
 		this.updateButton = new JButton("Update!");
 		this.pokedexSelector = new JComboBox(baseController.buildPokedexText());
-		this.pokemonLabel = new JLabel("Current Pokemon", pokemonIcon, SwingConstants.CENTER);
+		this.pokemonLabel = new JLabel(null, pokemonIcon, SwingConstants.CENTER);
 		this.healthLabel = new JLabel("health");
 		this.combatLabel = new JLabel("combat");
 		this.speedLabel = new JLabel("speed");
@@ -180,7 +180,12 @@ public class PokemonPanel extends JPanel
 	
 	private boolean isValidDouble(String input)
 	{
-		return true;
+		boolean isDouble = false;
+		if (input.length() != 0)
+		{
+			isDouble = true;
+		}
+		return isDouble;
 	}
 	
 	private boolean isValidInteger(String input)
