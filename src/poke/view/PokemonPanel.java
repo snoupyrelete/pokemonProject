@@ -6,9 +6,9 @@ import javax.swing.*;
 
 import poke.controller.PokemonController;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Dimension;
+
+import java.awt.event.*;
 
 public class PokemonPanel extends JPanel
 {
@@ -142,6 +142,51 @@ public class PokemonPanel extends JPanel
 				changeImageDisplay(baseController.getPokedex().get(selected).getClass().getSimpleName());
 			}
 		});
+		
+		this.addMouseListener(new MouseListener()
+			{
+				public void mouseEntered(MouseEvent entered)
+				{
+					//System.out.println("In!");
+				}
+				
+				public void mouseExited(MouseEvent exited)
+				{
+					//System.out.println("Out!!");
+				}
+			
+				public void mousePressed(MouseEvent pressed)
+				{
+					//System.out.println("Pressed!");
+				}
+				
+				public void mouseClicked(MouseEvent clicked)
+				{
+					System.out.println("Released!");
+				}
+
+				public void mouseReleased(MouseEvent released) 
+				{
+					//System.out.println("Clicked!");
+				}
+			});
+		
+		this.addMouseMotionListener(new MouseMotionListener()
+		{
+			public void mouseMoved(MouseEvent moved)
+			{
+				System.out.println(moved.getX() + "," + moved.getY());
+				if (moved.getX() <= 5 && moved.getY() <= 5)
+				{
+					System.out.println("You found the secret point!");
+				}
+			}
+			
+			public void mouseDragged(MouseEvent dragged)
+			{
+				setRandomColor();
+			}
+		});
 	}
 	
 	private void changeColorBasedOnType(String type)
@@ -176,6 +221,15 @@ public class PokemonPanel extends JPanel
 		}
 		pokemonLabel.setIcon(pokemonIcon);
 		repaint();
+	}
+	
+	private void setRandomColor()
+	{
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		
+		this.setBackground(new Color(red, green, blue));
 	}
 	
 	private boolean isValidDouble(String input)
