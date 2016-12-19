@@ -91,6 +91,14 @@ public abstract class Pokemon
 		
 		return pokemonInfo;
 	}
+
+	public String toString() 
+	{
+		return "Pokemon [hitPoints=" + hitPoints + ", attackPoints=" + attackPoints + ", number=" + number + ", speed="
+				+ speed + ", name=" + name + "]";
+	}
+	
+
 	
 	
 }
