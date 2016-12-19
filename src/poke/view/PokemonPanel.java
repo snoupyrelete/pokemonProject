@@ -130,18 +130,24 @@ public class PokemonPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				int selected = pokedexSelector.getSelectedIndex();
-				System.out.println(baseController.getPokedex().get(selected));
-				nameField.setText(baseController.getPokedex().get(selected).getName());
-				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
-				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
-				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
-				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
-				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
-				
-				if (isValidInteger(healthField.getText()) && isValidInteger(numberField.getText()))
+//				System.out.println(baseController.getPokedex().get(selected));
+//				nameField.setText(baseController.getPokedex().get(selected).getName());
+//				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
+//				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
+//				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
+//				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
+//				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
+//				
+				if (isValidInteger(healthField.getText()) && isValidInteger(combatField.getText()) && isValidName(nameField.getText()) && isValidDouble(speedField.getText()))
 				{
-					baseController.updateSelected(0, "", 1, 2, 1.0);
+					baseController.updateSelected(
+							selected,
+							nameField.getText(), 
+							Integer.parseInt(combatField.getText()),
+							Integer.parseInt(healthField.getText()), 
+							Double.parseDouble(speedField.getText()));	
 				}
+				
 				healthField.getText();
 				
 				changeColorBasedOnType(baseController.getPokedex().get(selected).getPokemonTypes());
