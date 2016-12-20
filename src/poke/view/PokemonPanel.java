@@ -125,21 +125,31 @@ public class PokemonPanel extends JPanel
 	
 	private void setupListeners()
 	{
+		
+		pokedexSelector.addActionListener(new ActionListener()
+		{
+				public void actionPerformed(ActionEvent selection)
+				{
+					int selected = pokedexSelector.getSelectedIndex();
+					System.out.println(baseController.getPokedex().get(selected));
+					nameField.setText(baseController.getPokedex().get(selected).getName());
+					numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
+					combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
+					speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
+					healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
+					advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
+					
+					changeColorBasedOnType(baseController.getPokedex().get(selected).getPokemonTypes());
+					changeImageDisplay(baseController.getPokedex().get(selected).getClass().getSimpleName());
+				}
+		});
+		
 		updateButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
 				int selected = pokedexSelector.getSelectedIndex();
 				
-//TODO: change this to combobox listener
-//				System.out.println(baseController.getPokedex().get(selected));
-//				nameField.setText(baseController.getPokedex().get(selected).getName());
-//				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
-//				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
-//				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
-//				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
-//				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
-
 				if (isValidInteger(healthField.getText()) && isValidInteger(combatField.getText()) && isValidName(nameField.getText()) && isValidDouble(speedField.getText()))
 				{
 					baseController.updateSelected(
@@ -149,11 +159,6 @@ public class PokemonPanel extends JPanel
 							Integer.parseInt(healthField.getText()), 
 							Double.parseDouble(speedField.getText()));	
 				}
-				
-				healthField.getText();
-				
-				changeColorBasedOnType(baseController.getPokedex().get(selected).getPokemonTypes());
-				changeImageDisplay(baseController.getPokedex().get(selected).getClass().getSimpleName());
 			}
 		});
 		
@@ -251,18 +256,41 @@ public class PokemonPanel extends JPanel
 		boolean isDouble = false;
 		if (input.length() != 0)
 		{
-			isDouble = true;
+			try 
+			{
+				Double.parseDouble(input);
+				isDouble = true;
+			} catch (Exception e) {
+				isDouble = false;
+			}
 		}
 		return isDouble;
 	}
 	
 	private boolean isValidInteger(String input)
 	{
-		return true;
+		boolean isInt = false;
+		if (input.length() != 0)
+		{
+		
+			try 
+			{
+				Integer.parseInt(input);
+				isInt = true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		return isInt;
 	}
 	
 	private boolean isValidName(String name)
 	{
-		return true;
+		boolean isName = false;
+		if (name.length() != 0 && name.length() >= 2)
+		{
+			isName = true;
+		}
+		return isName;
 	}
 }
