@@ -130,6 +130,8 @@ public class PokemonPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				int selected = pokedexSelector.getSelectedIndex();
+				
+//TODO: change this to combobox listener
 //				System.out.println(baseController.getPokedex().get(selected));
 //				nameField.setText(baseController.getPokedex().get(selected).getName());
 //				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
@@ -137,7 +139,7 @@ public class PokemonPanel extends JPanel
 //				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
 //				healthField.setText(baseController.getPokedex().get(selected).getHitPoints() + "");
 //				advancedArea.setText(baseController.getPokedex().get(selected).getPokemonInformation() + "\n" + baseController.getPokedex().get(selected).getPokemonTypes());
-//				
+
 				if (isValidInteger(healthField.getText()) && isValidInteger(combatField.getText()) && isValidName(nameField.getText()) && isValidDouble(speedField.getText()))
 				{
 					baseController.updateSelected(
